@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Gehitu galdera</title>
+		<link rel='stylesheet' type='text/css' href='stylesPWS/style.css' />
+		<link rel='stylesheet' 
+		   type='text/css' 
+		   media='only screen and (min-width: 530px) and (min-device-width: 481px)'
+		   href='stylesPWS/wide.css' />
+		<link rel='stylesheet' 
+		   type='text/css' 
+		   media='only screen and (max-width: 480px)'
+		   href='stylesPWS/smartphone.css' />
+		   
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script>
+		
+		
+		$(document).ready(function(){
+
+			$("#galderenF").submit(function(){
+				var g1 = $("#g1").val();
+				var g2 = $("#g2").val();
+				var g3 = $("#g3").val();
+				var g4 = $("#g4").val();
+				var g5 = $("#g5").val();
+				var g6 = $("#g6").val();
+				var zail = $("#cmb").val();
+				var g7 = $("#g7").val();
+				//alert(g1);alert(g2);alert(g3);alert(g4);alert(g5);alert(g6);alert(zail);alert(g7); //guarda bien los valores
+				
+				var gutxienezkoLuzera = new RegExp (/^[A-Za-z]+\s[A-Za-z]+\s[A-Za-z]+\s[A-Za-z]+\s[A-Za-z]+\s[A-Za-z]+[A-Za-z]+[A-Za-z]+[A-Za-z]+[A-Za-z]+$/);
+				if (gutxienezkoLuzera.test(g2)){
+					alert("Sartu galdera luzeagoa, gutxienez 10 hitz izan behar ditu!");
+					return false;
+				}
+				
+				if (g1 == 'undefined' || g1 === null || g1 === ''){alert("Sartu zure korreoa!");return false;};
+				if (g2 == 'undefined' || g2 === null || g2 === ''){alert("Sartu galdera bat!");return false;};
+				if (g3 == 'undefined' || g3 === null || g3 === ''){alert("Sartu erantzun zuzen bat!");return false;};
+				if (g4 == 'undefined' || g4 === null || g4 === ''){alert("Sartu lehenengo erantzun okerra!");return false;};
+				if (g5 == 'undefined' || g5 === null || g5 === ''){alert("Sartu bigarrengo erantzun okerra!");return false;};
+				if (g6 == 'undefined' || g6 === null || g6 === ''){alert("Sartu hirugarrengo erantzun okerra!");return false;};
+				if (g7 == 'undefined' || g7 === null || g7 === ''){alert("Sartu galderaren gai arloa!");return false;};
+				
+				var korreoMota = new RegExp (/^[a-z]+[0-9]{3}@ikasle\.ehu\.(eus|es)$/);
+				if (!korreoMota.test(g1)){
+					alert("Korreoa ez da zuzena! (Korreo adibidea: izena000@ikasle.ehu.[es/eus])"); return false
+				}
+				
+				
+			});
+		});
+
+	</script>
+	</head>
+    <body>
+	<h1>Sartu nahi duzun galdera</h1>
+	<h5>Derrigorrezkoa da zati guztiak betetzea!</h5> <br>
+		<form id="galderenF" name="galderenF" action="addQuestion.php" method="POST">
+			<table>
+				<tr>
+					<td>  Sartu korreoa </td>
+					<td colspan="5"><input name="korreoa" id="g1" type = "text" size="80"/></td>
+				</tr>
+				<tr>
+					<td> Sartu galdera </td>
+					<td colspan="5"><input name="galdera" id="g2" type = "text" size="80" minlength="10" oninvalid="setCustomValidity('Gutxienez 10 karaktere izan behar ditu!')" oninput="setCustomValidity('')"/></td>
+				</tr>
+				<tr>
+					<td> Sartu erantzun zuzena </td>
+					<td colspan="5"><input name="zuzena" id="g3" type = "text" size="80"/></td>
+				</tr>
+				<tr>
+					<td> Sartu erantzun okerra (1) </td>
+					<td colspan="5"><input name="okerra1" id="g4" type = "text" size="80"/></td>
+				</tr>
+				<tr>
+					<td> Sartu erantzun okerra (2) </td>
+					<td colspan="5"><input name="okerra2" id="g5" type = "text" size="80"/> </td>
+				</tr>
+				<tr>
+					<td> Sartu erantzun okerra (3) </td>
+					<td colspan="5"><input name="okerra3" id = "g6" type = "text" size="80"/></td>
+				</tr>
+				<tr>
+					<td>Sartu zailtasun maila</td>
+					<td><select name="zaila" id="cmb">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+						</select></td>
+				
+					<td>Sartu gai arloa</td>
+					<td><input name="gaia" id="g7" type ="text"/></td>
+					<td><input id="btn" type="submit" value="Balioztatu eta igo"/></td>
+					<td><span><a href=layoutErre.html>Atzera</a></span></td>
+				</tr>
+			</table>
+		</form>
+    </body>
+</html>
